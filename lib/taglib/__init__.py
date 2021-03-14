@@ -46,16 +46,21 @@ class svg_builder(abstract_builder):
 
 # - Test -----------------------------------------------
 if __name__ == "__main__":
+	
 	import random
-
-	rand_color = lambda: random.randint(0,255)
+	rand_int = lambda: random.randint(0,255)
 
 	new_svg = svg_builder()
-	inner_svg = new_svg.svg(version="1.1", xmlns="http://www.w3.org/2000/svg", x="0px", y="0px", width="500px", height="500px", viewBox="0 0 500 500")
-	group = inner_svg.g(id="Some grouped items")
 
-	for x in range(100):
-		group.circle(cx=random.random()*10*x, cy=random.random()*10*x, r=random.random()*10, fill='#%02X%02X%02X' %(rand_color(), rand_color(), rand_color()))
+	inner_svg = new_svg.svg(version="1.1", xmlns="http://www.w3.org/2000/svg", x="0px", y="0px", width="255px", height="255px", viewBox="0 0 255 255", __r='xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"')
+
+	group = inner_svg.g(id="Some Circular items")
+	for x in range(5):
+		group.circle(cx=rand_int(), cy=rand_int(), r=int(rand_int()/(x+1)), fill='#%02X%02X%02X' %(rand_int(), rand_int(), rand_int()))
+
+	group = inner_svg.g(id="Some rectangular items")
+	for x in range(5):
+		group.rect(x=rand_int(), y=rand_int(), width=int(rand_int()/(x+1)), height=int(rand_int()/(x+1)), fill='#%02X%02X%02X' %(rand_int(), rand_int(), rand_int()))
 
 	print(new_svg.dumps())
-	#new_svg.dump(r'd:\test.svg')
+

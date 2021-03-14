@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: TagLib ver.1.2 (https://github.com/kateliev/taglib) -->
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="255px" height="255px" viewBox="0 0 255 255" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+
+<g id="Some Circular items">
+    
+    <circle cx="246" cy="8" r="243" fill="#67ACAD" />
+    <circle cx="172" cy="140" r="81" fill="#A5CBD4" />
+    <circle cx="55" cy="181" r="3" fill="#95F488" />
+    <circle cx="252" cy="233" r="8" fill="#70E301" />
+    <circle cx="33" cy="8" r="30" fill="#5DD74E" />
+</g>
+<g id="Some rectangular items">
+    
+    <rect x="234" y="67" width="169" height="59" fill="#6B82EF" />
+    <rect x="129" y="127" width="21" height="25" fill="#5EFC12" />
+    <rect x="6" y="8" width="22" height="70" fill="#DFB994" />
+    <rect x="156" y="235" width="37" height="14" fill="#F0B3F0" />
+    <rect x="231" y="57" width="28" height="19" fill="#C618FF" />
+</g>
+</svg>
