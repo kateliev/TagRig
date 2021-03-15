@@ -18,7 +18,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 from taglib.objects import markup_config, abstract_builder
 
 # - Init --------------------------------------------
-__version__ = 1.2
+__version__ = 1.3
 
 # - Classes -------------------------------------------
 # -- Language specific ---------------------------------
@@ -27,8 +27,8 @@ class html_builder(abstract_builder):
 	def __init__(self):
 		html_config = markup_config()
 		html_config.tags = 'a,abbr,acronym,address,applet,area,article,aside,audio,b,base,basefont,bdi,bdo,big,blockquote,body,br,button,canvas,caption,center,cite,code,col,colgroup,data,datalist,dd,del,details,dfn,dialog,dir,div,dl,dt,em,embed,fieldset,figcaption,figure,font,footer,form,frame,frameset,h1,head,header,hr,html,i,iframe,img,input,ins,kbd,label,legend,li,link,main,map,mark,meta,meter,nav,noframes,noscript,object,ol,optgroup,option,output,p,param,picture,pre,progress,q,rp,rt,ruby,s,samp,script,section,select,small,source,span,strike,strong,style,sub,summary,sup,svg,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,tt,u,ul,var,video,wbr'.split(',')
-		html_config.template_start_end = '{fh}<{tag} {attrib}>{fch}{content}{ft}</{tag}>'
-		html_config.template_empty = '{fh}<{tag} {attrib} />'
+		html_config.template_start_end = '{fh}<{tag}{attrib}>{fch}{content}{ft}</{tag}>'
+		html_config.template_empty = '{fh}<{tag}{attrib}/>'
 		html_config.document = '<!DOCTYPE html>\n<!-- Generator: TagLib ver.{} (https://github.com/kateliev/taglib) -->\n'.format(__version__)
 
 		super(html_builder, self).__init__(html_config)
@@ -38,8 +38,8 @@ class svg_builder(abstract_builder):
 	def __init__(self):
 		html_config = markup_config()
 		html_config.tags = 'a,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,script,set,solidcolor,stop,style,svg,switch,symbol,text,textPath,title,tspan,unknown,use,view'.split(',')
-		html_config.template_start_end = '{fh}<{tag} {attrib}>{fch}{content}{ft}</{tag}>'
-		html_config.template_empty = '{fh}<{tag} {attrib} />'
+		html_config.template_start_end = '{fh}<{tag}{attrib}>{fch}{content}{ft}</{tag}>'
+		html_config.template_empty = '{fh}<{tag}{attrib}/>'
 		html_config.document = '<?xml version="1.0" encoding="utf-8"?>\n<!-- Generator: TagLib ver.{} (https://github.com/kateliev/taglib) -->\n'.format(__version__)
 
 		super(svg_builder, self).__init__(html_config)

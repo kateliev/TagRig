@@ -16,7 +16,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 # - Init --------------------------------------------
-__version__ = 2.4
+__version__ = 2.5
 
 # - Classes -----------------------------------------
 # -- Abstract base classes --------------------------
@@ -42,7 +42,7 @@ class abstract_builder(object):
 				
 		# - Internals
 		self.__markup_config = markup_config
-		self.__indent = lambda level: '\n' + level * self.__markup_config.whitespace
+		self.__indent = lambda level: level * self.__markup_config.whitespace
 		self.__raw_tokens = ['__raw__', '__r', '__string__', '__s']
 
 		# -- Dynamic build of class methods
@@ -61,11 +61,14 @@ class abstract_builder(object):
 			Content (string) or markup_builder (object)
 		'''
 		assert tag in self.__markup_config.tags, 'Unrecognized language element <%s>' %tag
+
 		if content == '': 
 			content = self.__class__()
-		
+
 		if len(kwargs.keys()): 
-			attrib = ' '.join(['{}="{}"'.format(attrib, value) if attrib not in self.__raw_tokens else value for attrib, value in kwargs.items()])
+			attrib = ' ' + ' '.join(['{}="{}"'.format(attrib, value) if attrib not in self.__raw_tokens else value for attrib, value in kwargs.items()])
+		else:
+			attrib = ''
 		
 		self.stack.append((tag, content, attrib))
 		return content
@@ -80,11 +83,12 @@ class abstract_builder(object):
 		# - Build
 		for item in self.stack:
 			tag, content, attrib = item
-			fh = ft = self.__indent(indent_level - 1)
-			fch = self.__indent(indent_level) 
+			fh = ft = '\n' + self.__indent(indent_level - 1)
+			fch = '\n' + self.__indent(indent_level) 
 			
 			if isinstance(content, self.__class__):	
 				content = content.dumps(indent_level + 1)
+				fch = self.__indent(indent_level) 
 
 			if len(content):
 				export_markup += self.__markup_config.template_start_end.format(tag=tag, content=content, attrib=attrib, fh=fh, fch=fch, ft=ft)
