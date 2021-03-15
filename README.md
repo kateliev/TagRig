@@ -17,7 +17,7 @@ new_document.body().div().p('Hello TagLib', style="text-align:center")
 
 print(new_document.dumps())
 ```
-...that returns te following string...
+...that returns the following string...
 ```
 <body>
 <div>    
@@ -27,6 +27,8 @@ print(new_document.dumps())
 </div>
 </body>
 ```
+Where any taglib **builder object** upon calling `.dumps()` will return the markup document as string.
+
 A little bit more complex example follows...
 ```
 import random
@@ -117,3 +119,4 @@ new_document.dump('my_test_doc.html')
 </div>
 </body>
 ```
+Where any taglib **builder object** upon calling `.dump(path_to_file)` will write the markup document as file.
