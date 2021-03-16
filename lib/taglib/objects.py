@@ -25,8 +25,8 @@ class markup_config(object):
 	def __init__(self):
 		self.whitespace = ' '*4
 		self.tags = []
-		self.template_start_end = ''
-		self.template_empty = ''
+		self.template_start_end = '{fh}<{tag}{attrib}>{fch}{content}{ft}</{tag}>'
+		self.template_empty = '{fh}<{tag}{attrib}/>'
 		self.document = ''
 
 class abstract_builder(object):

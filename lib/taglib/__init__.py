@@ -18,7 +18,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 from taglib.objects import markup_config, abstract_builder
 
 # - Init --------------------------------------------
-__version__ = 1.3
+__version__ = 1.4
 
 # - Classes -------------------------------------------
 # -- Language specific ---------------------------------
