@@ -16,7 +16,7 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 # - Init --------------------------------------------
-__version__ = 2.5
+__version__ = 2.6
 
 # - Classes -----------------------------------------
 # -- Abstract base classes --------------------------
@@ -43,6 +43,7 @@ class abstract_builder(object):
 		# - Internals
 		self.__markup_config = markup_config
 		self.__indent = lambda level: level * self.__markup_config.whitespace
+		self.__raw_mark = '__'
 		self.__raw_tokens = ['__raw__', '__r', '__string__', '__s']
 
 		# -- Dynamic build of class methods
@@ -66,7 +67,7 @@ class abstract_builder(object):
 			content = self.__class__()
 
 		if len(kwargs.keys()): 
-			attrib = ' ' + ' '.join(['{}="{}"'.format(attrib, value) if attrib not in self.__raw_tokens else value for attrib, value in kwargs.items()])
+			attrib = ' ' + ' '.join(['{}="{}"'.format(attrib.strip(self.__raw_mark), value) if attrib not in self.__raw_tokens else value for attrib, value in kwargs.items()])
 		else:
 			attrib = ''
 		
