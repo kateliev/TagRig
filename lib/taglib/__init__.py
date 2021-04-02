@@ -1,3 +1,4 @@
+
 # encoding:	utf-8
 # ----------------------------------------------------
 # MODULE: 	TagLib
@@ -18,7 +19,7 @@ from __future__ import absolute_import, print_function, unicode_literals
 from taglib.objects import markup_config, abstract_builder
 
 # - Init --------------------------------------------
-__version__ = 1.4
+__version__ = 1.5
 
 # - Classes -------------------------------------------
 # -- Language specific ---------------------------------
@@ -36,13 +37,24 @@ class html_builder(abstract_builder):
 class svg_builder(abstract_builder):
 	'''A simple SVG builder'''
 	def __init__(self):
-		html_config = markup_config()
-		html_config.tags = 'a,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,script,set,solidcolor,stop,style,svg,switch,symbol,text,textPath,title,tspan,unknown,use,view'.split(',')
-		html_config.template_start_end = '{fh}<{tag}{attrib}>{fch}{content}{ft}</{tag}>'
-		html_config.template_empty = '{fh}<{tag}{attrib}/>'
-		html_config.document = '<?xml version="1.0" encoding="utf-8"?>\n<!-- Generator: TagLib ver.{} (https://github.com/kateliev/taglib) -->\n'.format(__version__)
+		svg_config = markup_config()
+		svg_config.tags = 'a,animate,animateMotion,animateTransform,circle,clipPath,color-profile,defs,desc,discard,ellipse,feBlend,feColorMatrix,feComponentTransfer,feComposite,feConvolveMatrix,feDiffuseLighting,feDisplacementMap,feDistantLight,feDropShadow,feFlood,feFuncA,feFuncB,feFuncG,feFuncR,feGaussianBlur,feImage,feMerge,feMergeNode,feMorphology,feOffset,fePointLight,feSpecularLighting,feSpotLight,feTile,feTurbulence,filter,foreignObject,g,hatch,hatchpath,image,line,linearGradient,marker,mask,mesh,meshgradient,meshpatch,meshrow,metadata,mpath,path,pattern,polygon,polyline,radialGradient,rect,script,set,solidcolor,stop,style,svg,switch,symbol,text,textPath,title,tspan,unknown,use,view'.split(',')
+		svg_config.template_start_end = '{fh}<{tag}{attrib}>{fch}{content}{ft}</{tag}>'
+		svg_config.template_empty = '{fh}<{tag}{attrib}/>'
+		svg_config.document = '<?xml version="1.0" encoding="utf-8"?>\n<!-- Generator: TagLib ver.{} (https://github.com/kateliev/taglib) -->\n'.format(__version__)
 
-		super(svg_builder, self).__init__(html_config)
+		super(svg_builder, self).__init__(svg_config)
+
+class designspace_builder(abstract_builder):
+	'''A simple UFO DesignSpace builder'''
+	def __init__(self):
+		designspace_config = markup_config()
+		designspace_config.tags = 'axes,axis,condition,conditionset,designspace,dict,dimension,features,groups,info,instance,instances,key,labelname,lib,lib,location,map,rule,rules,source,sources,string,sub'.split(',')
+		designspace_config.template_start_end = '{fh}<{tag}{attrib}>{fch}{content}{ft}</{tag}>'
+		designspace_config.template_empty = '{fh}<{tag}{attrib}/>'
+		designspace_config.document = '<?xml version="1.0" encoding="utf-8"?>\n<!-- Generator: TagLib ver.{} (https://github.com/kateliev/taglib) -->\n'.format(__version__)
+
+		super(designspace_builder, self).__init__(designspace_config)
 
 # - Test -----------------------------------------------
 if __name__ == "__main__":
